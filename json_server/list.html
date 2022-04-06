@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" onsubmit="return xyz()">
+        Name :<input type="text" id="pname"><br><br>
+        Price: <input type="text" id="price"><br><br>
+        Quantity: <input type="text" id="quantity"><br><br>
+        <input type="submit" >
+    </form>
+    <h1>Products</h1>
+<ul id="products">
+
+</ul>
+
+<script>
+  const ul = document.getElementById('products');
+  const list = document.createDocumentFragment();
+  const url = 'http://localhost:3001/products';
+
+  fetch(url)
+    .then((response) => {
+        console.log("hello");
+      return response.json();
+    })
+    .then((data) => {
+      let products = data;
+      console.log("hello2"); 
+      products.map(function(product) {
+        let li = document.createElement('li');
+        let name = document.createElement('h2');
+        let price = document.createElement('span');
+        console.log("hello3"); 
+
+        name.innerHTML = `Name :    ${product.pname}`;
+        price.innerHTML = `Price : ${product.price}`;
+        //console.log(name.innerHTML);
+        li.appendChild(name);
+        li.appendChild(price);
+        ul.appendChild(li);
+        //console.log(list);
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+  //ul.appendChild(list);
+  //document.getElementById("products").appendChild(list);
+  function xyz(){
+      var a= document.getElementById("pname").value;
+      var b= document.getElementById("price").value;
+      var c= document.getElementById("quantity").value;
+      var data = {
+          "pname":a,
+          "price":b,
+          "quantity":c
+      }
+    alert(data);
+    var options = {
+        method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }    
+
+    fetch(url,options)
+    .then((data) => {
+      let products = data;
+      console.log("hello"); 
+      products.map(function(product) {
+        let li = document.createElement('li');
+        let name = document.createElement('h2');
+        let price = document.createElement('span');
+        console.log("hello3"); 
+
+        name.innerHTML = `Name :    ${product.pname}`;
+        price.innerHTML = `Price : ${product.price}`;
+        console.log(name.innerHTML);
+        li.appendChild(name);
+        li.appendChild(price);
+        ul.appendChild(li);
+        //console.log(list);
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
+</script>
+</body>
+</html>
