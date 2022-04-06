@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width: 420px;
+            height: 420px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: blanchedalmond;
+        }
+        th,td{
+            border: 1px solid red;
+            text-align: center;
+        }
+        table{
+            width: 100%;
+            height: 100%;
+        }
+        button{
+            width: 90px;
+            height: 70px;
+        }
+        #displaybar{
+            width: 300px;
+            height: 40px;
+        }
+    </style>
+    <script>
+        let his;
+        function display(val){
+            document.getElementById("displaybar").value+=val
+
+        }
+        function Reset(){
+            document.getElementById("displaybar").value="";
+        }
+        function solve()
+		{
+			let x = document.getElementById("displaybar").value
+			let y = eval(x)
+			document.getElementById("displaybar").value = y;
+            his=x;
+		}
+        
+    </script>
+</head>
+<body>
+    <div class="main">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="4">Calculator</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3"><input type="text" name="" id="displaybar" placeholder="Result"></td>
+                    <td rowspan="2"><button onclick="Reset()">Reset</button></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text" name="" id="displaybar" placeholder="History"></td>
+                </tr>
+                <tr>
+                    <td><button onclick="display(9)" value="9" id="id9">9</button></td>
+                    <td><button onclick="display(8)" value="8" id="id8">8</button></td>
+                    <td><button onclick="display(7)" value="7" id="id7">7</button></td>
+                    <td><button onclick="display('/')" value="/" id="id10">/</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="display(6)" value="6" id="id6">6</button></td>
+                    <td><button onclick="display(5)" value="5" id="id5">5</button></td>
+                    <td><button onclick="display(4)" value="4" id="id4">4</button></td>
+                    <td><button onclick="display('*')" value="*" id="id11">*</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="display(3)" value="3" id="id3">3</button></td>
+                    <td><button onclick="display(2)" value="2" id="id2">2</button></td>
+                    <td><button onclick="display(1)" value="1" id="id1">1</button></td>
+                    <td><button onclick="display('-')" value="12" id="id12">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="display('**')" value="**" id="id13">**</button></td>
+                    <td><button onclick="display(0)" value="0" id="id0">0</button></td>
+                    <td><button onclick="solve()" value="=" id="id14">=</button></td>
+                    <td><button onclick="display('+')" value="+" id="id15">+</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
